@@ -1,18 +1,147 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Resep</title>
+    <title>MyRecipe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            950: '#172554',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-    <h1>Daftar Resep Makanan</h1>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col antialiased">
+    <header class="relative overflow-hidden px-4 py-20 text-white shadow-inner">
+        <div class="header-overlay absolute inset-0 z-0"></div>
 
-    <div id="recipes"></div>
+        <div class="absolute -top-12 -left-12 h-64 w-64 rounded-full bg-white/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-16 -right-16 h-80 w-80 rounded-full bg-brand-400/20 blur-3xl pointer-events-none"></div>
+
+        <div class="container relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center">
+            <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-brand-50 backdrop-blur-md">
+                <span></span>
+            Fresh recipes, made easy
+            </div>
+            <h1 class="mb-4 text-4xl font-extrabold tracking-tight drop-shadow-sm md:text-6xl">
+                MyRecipe
+            </h1>
+            <p class="mx-auto mb-8 max-w-2xl text-lg font-light leading-relaxed text-brand-100">
+                Temukan berbagai resep makanan terbaik, simpan favoritmu, dan masak dengan lebih percaya diri.
+            </p>
+            
+            <div class="grid w-full max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
+                <div class="hero-stat rounded-2xl border border-white/15 bg-white/10 px-4 py-4 text-left backdrop-blur-md text-center">
+                    <p class="text-2xl font-extrabold text-white">50+</p>
+                    <p class="text-sm text-brand-100">Resep menarik</p>
+                </div>
+                <div class="hero-stat rounded-2xl border border-white/15 bg-white/10 px-4 py-4 text-left backdrop-blur-md text-center">
+                    <p class="text-2xl font-extrabold text-white">Fast</p>
+                    <p class="text-sm text-brand-100">Waktu masak singkat</p>
+                </div>
+                <div class="hero-stat rounded-2xl border border-white/15 bg-white/10 px-4 py-4 text-left backdrop-blur-md text-center">
+                    <p class="text-2xl font-extrabold text-white">Simple</p>
+                    <p class="text-sm text-brand-100">Resep makanan simple </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+        <main class="container mx-auto flex max-w-6xl flex-grow flex-col px-4 pb-16">
+        <section class="relative z-20 -mt-10 mb-10 w-full rounded-[2rem] border border-slate-200/80 bg-white/95 p-6 shadow-[0_25px_80px_-20px_rgba(15,23,42,0.25)] backdrop-blur-md md:p-8">
+            <div class="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                <div>
+                    <p class="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-brand-600">Cari resep</p>
+                    <h2 class="text-2xl font-bold text-slate-800">Apa yang ingin kamu masak hari ini?</h2>
+                </div>
+                <div class="rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
+                    Tip: klik bahan yang sudah siap saat melihat detail resep.
+                </div>
+            </div>
+
+            <div class="relative mb-6">
+                <svg class="search-icon absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input
+                    type="text"
+                    id="search"
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50/80 py-4 pl-14 pr-5 text-lg font-medium text-slate-700 transition-all duration-300 placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-500/10"
+                    placeholder="Cari resep makanan (contoh: Pizza, Pasta, Soup)...">
+            </div>
+
+            <div class="category-section">
+                <div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+                    <span class="block text-xs font-bold uppercase tracking-[0.25em] text-slate-400">Pilih Kategori</span>
+                    <span class="text-sm text-slate-500">Sesuaikan dengan mood makanmu</span>
+                </div>
+                <div class="flex flex-wrap gap-2.5" id="categoryChips">
+                    <button class="flex items-center gap-1.5 rounded-full border border-brand-600 bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-brand-500/20 transition-all duration-300 active" data-category="all">Semua Kategori</button>
+                    <button class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-600 transition-all duration-300 hover:bg-slate-100 hover:text-slate-800" data-category="Breakfast">Breakfast</button>
+                    <button class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-600 transition-all duration-300 hover:bg-slate-100 hover:text-slate-800" data-category="Lunch">Lunch</button>
+                    <button class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-600 transition-all duration-300 hover:bg-slate-100 hover:text-slate-800" data-category="Dinner">Dinner</button>
+                    <button class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-600 transition-all duration-300 hover:bg-slate-100 hover:text-slate-800" data-category="Snack">Snack</button>
+                    <button class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-600 transition-all duration-300 hover:bg-slate-100 hover:text-slate-800" data-category="favorites">Resep Favorit</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="recipes" class="grid grid-cols-1 gap-8 pr-2 md:grid-cols-2 lg:grid-cols-3 lg:max-h-[650px] lg:overflow-y-auto custom-scrollbar">
+            <div class="col-span-full py-20 text-center">
+                <div class="inline-block h-12 w-12 animate-spin rounded-full border-4 border-brand-500 border-t-transparent" role="status">
+                    <span class="sr-only">Loading</span>
+                </div>
+                <p class="mt-4 font-medium text-slate-500">Mengambil resep..</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="recipeModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 p-4 opacity-0 backdrop-blur-sm transition-all duration-300" role="dialog" aria-modal="true">
+        <div class="relative flex max-h-[90vh] w-full max-w-2xl transform scale-95 flex-col overflow-hidden rounded-3xl bg-white shadow-2xl transition-transform duration-300">
+            <div class="absolute right-4 top-4 z-50">
+                <button id="closeModalBtn" type="button" class="rounded-full border border-slate-100 bg-white/90 p-2.5 text-slate-500 shadow-md backdrop-blur-sm transition-all duration-200 hover:bg-white hover:text-slate-800 focus:outline-none" aria-label="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <div id="detailContent" class="overflow-y-auto p-6 md:p-8">
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-auto border-t border-slate-800 bg-slate-900 py-8 text-center text-slate-400">
+        <div class="container mx-auto px-4">
+            <p class="text-sm font-medium">&copy; 2026 MyRecipe.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 
 </body>
+
 </html>

@@ -1,0 +1,98 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -ms-overflow-style: none;
+    background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.08), transparent 28%),
+        linear-gradient(180deg, #f8fafc 0%, #f8fbff 100%);
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
+::selection {
+    background: rgba(37, 99, 235, 0.2);
+    color: #0f172a;
+}
+
+header {
+   background-image: url(bg.jpg);
+   background-position: center;
+}
+
+.header-overlay {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 80%);
+    pointer-events: none;
+}
+
+.hero-stat {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-stat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14);
+}
+
+.logo-icon {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    55% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+}
+
+.ingredients-list li.checked .checkbox-mock {
+    background-color: #10b981;
+    border-color: #10b981;
+}
+
+.ingredients-list li.checked .checkbox-mock::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.ingredients-list li.checked .ingredient-text {
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(148, 163, 184, 0.2);
+    border-radius: 999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+    border-radius: 999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #1d4ed8;
+}
+
+@supports (scrollbar-width: thin) {
+    .custom-scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: #2563eb rgba(148, 163, 184, 0.2);
+    }
+}
