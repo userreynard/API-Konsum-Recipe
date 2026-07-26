@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "resep-api/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "resep-api/api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/recipes",
+      "dest": "/resep-api/api/recipes.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/resep-api/server.js"
+    }
+  ]
+}

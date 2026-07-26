@@ -9,7 +9,7 @@ const inactiveClasses = ["bg-slate-50", "border-slate-200", "text-slate-600", "h
 
 async function getRecipes() {
     try {
-        const response = await fetch("/recipes");
+        const response = await fetch("/api/recipes");
         if (!response.ok) throw new Error("Gagal mengambil data dari server");
         
         const data = await response.json();
